@@ -2,6 +2,7 @@
 auto-save-list
 elpa
 transient
+url
 
 # Ignore emacs custom file.
 custom.el

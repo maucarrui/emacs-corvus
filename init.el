@@ -20,6 +20,9 @@
 (defvar corvus-core-dir (expand-file-name "core" corvus-root-dir)
   "The directory which contains Corvus' core configurations.")
 
+(defvar corvus-modules-dir (expand-file-name "modules" corvus-root-dir)
+  "The directory which contains Corvus' modules.")
+
 ;; Corvus will print the time it takes to set up.
 
 (defun corvus-message (msg)
@@ -49,12 +52,15 @@ the function to execute."
   (corvus-message "Setting up mode line...")
   (require 'corvus-mode-line)
   (corvus-message "Setting up themes...")
-  (require 'corvus-themes))
+  (require 'corvus-themes)
+  (corvus-message "Setting up modules...")
+  (require 'corvus-leetcode))
 
 (defun initialize-corvus ()
   "Initialize Corvus, indicating the time it took to set up."
   (corvus-message "Starting...")
   (add-to-list 'load-path corvus-core-dir)
+  (add-to-list 'load-path corvus-modules-dir)
   (setq custom-file (expand-file-name "custom.el" corvus-root-dir))
   (message-function-time (set-up-corvus)
 			 "Finished setting up."))
