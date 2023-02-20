@@ -55,22 +55,10 @@ the function to execute."
   "Initialize Corvus, indicating the time it took to set up."
   (corvus-message "Starting...")
   (add-to-list 'load-path corvus-core-dir)
+  (setq custom-file (expand-file-name "custom.el" corvus-root-dir))
   (message-function-time (set-up-corvus)
 			 "Finished setting up."))
 
 (initialize-corvus)
 
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(super-save smartparens nord-theme nlinum multiple-cursors expand-region diminish)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
