@@ -1,0 +1,4 @@
+# Ignore emacs generated directories.
+auto-save-list
+elpa
+transient
