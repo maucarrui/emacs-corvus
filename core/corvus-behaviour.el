@@ -29,6 +29,13 @@
 (add-to-list 'super-save-triggers 'ace-window)
 (super-save-mode +1)
 
+;; Compilation details.
+(require 'compile)
+(setq compilation-ask-about-save nil         ;; Save before compiling.
+      compilation-always-kill t              ;; Kill old compile process.
+      compilation-scroll-output 'first-error ;; Move to the first error.
+      )
+
 (provide 'corvus-behaviour)
 
 ;;; corvus-behaviour.el ends here
