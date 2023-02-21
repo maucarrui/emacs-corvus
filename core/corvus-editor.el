@@ -19,7 +19,7 @@
 
 ;; Smart parenthesis.
 (require 'smartparens-config)
-(smartparens-mode t)
+(smartparens-global-mode 1)
 
 (provide 'corvus-editor)
 

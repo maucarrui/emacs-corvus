@@ -11,6 +11,7 @@
 ;; Diminish the following minor modes.
 (diminish 'super-save-mode)
 (diminish 'eldoc-mode)
+(diminish 'smartparens-mode)
 
 (provide 'corvus-mode-line)
 
