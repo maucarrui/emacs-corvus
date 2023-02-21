@@ -21,6 +21,10 @@
 (require 'smartparens-config)
 (smartparens-global-mode 1)
 
+;; Enhace isearch and query-replace.
+(require 'anzu)
+(global-anzu-mode)
+
 (provide 'corvus-editor)
 
 ;;; corvus-editor.el ends here

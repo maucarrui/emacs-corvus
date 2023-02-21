@@ -11,6 +11,8 @@
 	     '("melpa" . "https://melpa.org/packages/"))
 
 ;; List of packages dependencies:
+;; - Anzu
+;;     Show number of matches in mode-line while searching.
 ;; - Diminish
 ;;     Properly hide minor modes from the mode line.
 ;; - Expand Region
@@ -28,15 +30,16 @@
 ;; - Windmove
 ;;     Move between windows using Shift + arrow keys.
 (defvar corvus-main-packages
-      '(diminish
-	expand-region
-        magit
-	multiple-cursors
-	nord-theme
-	smartparens
-	super-save
-	windmove)
-      "List of main dependencies of Corvus")
+  '(anzu
+    diminish
+    expand-region
+    magit
+    multiple-cursors
+    nord-theme
+    smartparens
+    super-save
+    windmove)
+  "List of main dependencies of Corvus")
 
 (defun corvus-install-package (package)
   "Install the given package when necessary."

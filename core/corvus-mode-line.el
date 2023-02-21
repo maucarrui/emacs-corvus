@@ -12,6 +12,7 @@
 (diminish 'super-save-mode)
 (diminish 'eldoc-mode)
 (diminish 'smartparens-mode)
+(diminish 'anzu-mode)
 
 (provide 'corvus-mode-line)
 
