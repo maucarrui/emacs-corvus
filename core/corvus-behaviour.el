@@ -40,6 +40,10 @@
 (require 'flyspell)
 (setq ispell-program-name "aspell")
 
+;; Spell checking on texts.
+(add-hook 'text-mode-hook #'flyspell-mode)
+
+;; Spell checking while programming.
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 
 (provide 'corvus-behaviour)
