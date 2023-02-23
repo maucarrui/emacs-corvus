@@ -13,7 +13,7 @@
 
 ;; Select words.
 (require 'expand-region)
-(global-set-key (kbd "C-.") 'er/expand-region)
+(global-set-key (kbd "S-SPC") 'er/expand-region)
 
 (provide 'corvus-keybindings)
 
