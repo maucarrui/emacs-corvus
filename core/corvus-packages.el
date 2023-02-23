@@ -17,6 +17,8 @@
 ;;     Properly hide minor modes from the mode line.
 ;; - Expand Region
 ;;     Smart expanding System, useful to select words and functions.
+;; - Flycheck
+;;     Spell-checking on the fly as one types.
 ;; - Magit
 ;;     Git interface in Emacs.
 ;; - Multiple Cursors
@@ -33,6 +35,7 @@
   '(anzu
     diminish
     expand-region
+    flycheck
     magit
     multiple-cursors
     nord-theme

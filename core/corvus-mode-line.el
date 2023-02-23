@@ -13,6 +13,7 @@
 (diminish 'eldoc-mode)
 (diminish 'smartparens-mode)
 (diminish 'anzu-mode)
+(diminish 'flyspell-mode)
 
 (provide 'corvus-mode-line)
 

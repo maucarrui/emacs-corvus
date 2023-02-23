@@ -36,6 +36,12 @@
       compilation-scroll-output 'first-error ;; Move to the first error.
       )
 
+;; Spell checking on buffers.
+(require 'flyspell)
+(setq ispell-program-name "aspell")
+
+(add-hook 'prog-mode-hook #'flyspell-prog-mode)
+
 (provide 'corvus-behaviour)
 
 ;;; corvus-behaviour.el ends here
