@@ -54,7 +54,8 @@ the function to execute."
   (corvus-message "Setting up themes...")
   (require 'corvus-themes)
   (corvus-message "Setting up modules...")
-  (require 'corvus-leetcode))
+  (require 'corvus-leetcode)
+  (require 'corvus-latex))
 
 (defun initialize-corvus ()
   "Initialize Corvus, indicating the time it took to set up."
