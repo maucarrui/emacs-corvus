@@ -6,3 +6,6 @@ url
 
 # Ignore emacs custom file.
 custom.el
+
+# Ignore multi-cursors list file.
+.mc-lists.el
