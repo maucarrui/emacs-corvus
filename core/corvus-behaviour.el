@@ -12,6 +12,9 @@
 ;; Revert buffers automatically when underlying files are changed externally.
 (global-auto-revert-mode t)
 
+;; Set fill-paragraph to 80 characters.
+(setq-default fill-column 80)
+
 ;; Meaningful names for buffers with the same name.
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)
