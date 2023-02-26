@@ -11,9 +11,6 @@
 ;;; Commentary:
 ;; This file sets up all the default configurations and modules of Corvus.
 
-(require 'benchmark)
-
-;; Variable to keep track of the configuration files of Corvus.
 (defvar corvus-root-dir (file-name-directory load-file-name)
   "The root directory of Corvus.")
 
@@ -23,21 +20,8 @@
 (defvar corvus-modules-dir (expand-file-name "modules" corvus-root-dir)
   "The directory which contains Corvus' modules.")
 
-;; Corvus will print the time it takes to set up.
-
-(defun corvus-message (msg)
-  "Corvus prints the contents of a message"
-  (message (concat "[CORVUS] - " msg)))
-
-(defun message-function-time (fun msg)
-  "Execute a function and print a message with the time it took
-the function to execute."
-  (let* ((elapsed-time (benchmark-elapse fun))
-	 (report-msg (format (concat msg " [%.3f s]") elapsed-time)))
-    (corvus-message report-msg)))
-
 (defun set-up-corvus ()
-  "Load all configuration files."
+  "Load Corvus' configuration files."
   (corvus-message "Loading configurations...")
   (corvus-message "Loading packages...")
   (require 'corvus-packages)
@@ -59,9 +43,10 @@ the function to execute."
 
 (defun initialize-corvus ()
   "Initialize Corvus, indicating the time it took to set up."
-  (corvus-message "Starting...")
   (add-to-list 'load-path corvus-core-dir)
   (add-to-list 'load-path corvus-modules-dir)
+  (require 'corvus-utilities)
+  (corvus-message "Starting...")
   (setq custom-file (expand-file-name "custom.el" corvus-root-dir))
   (message-function-time (set-up-corvus)
 			 "Finished setting up."))

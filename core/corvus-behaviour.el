@@ -68,6 +68,11 @@
 ;; Spell checking while programming.
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 
+;; Show current function while programming.
+
+(setq which-func-cleanup-function #'trim-function-name)
+(add-hook 'prog-mode-hook #'which-function-mode)
+
 (provide 'corvus-behaviour)
 
 ;;; corvus-behaviour.el ends here
