@@ -50,8 +50,5 @@ first 20 characters of the function name."
                 (substring file-name (- (length file-path) 8)))
       file-name)))
 
-;;(corvus-message (quote (:eval (trim-buffer-name "1011_capacity_to_ship_packages_within_d_days.py"))))
-(corvus-message (trim-buffer-name "1011_capacity_to_ship_packages_within_d_days.py"))
-
 (provide 'corvus-utilities)
 ;;; corvus-utilities.el ends here.

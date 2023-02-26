@@ -1,77 +1,95 @@
 ;;; corvus-behaviour.el --- Corvus' behaviour configurations.
-;;; Commentary:
-;; Core behaviours when dealing with buffers for Corvus.
 
-;; Store all backup and autosaves files in the tmp directory.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Backups and Auto-saves configurations.                                 ;;;;
+;;;;     - Store backup files in the temporal directory (/tmp).             ;;;;
+;;;;     - Store auto-save files in the temporal directory (/tmp).          ;;;;
+;;;;     - Revert buffers automatically when underlying files are           ;;;;
+;;;;       changed externally.                                              ;;;;
+;;;;     - Automatically save buffers associated with files when            ;;;;
+;;;;       switching to another window.                                     ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
 
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-;; Revert buffers automatically when underlying files are changed externally.
 (global-auto-revert-mode t)
 
-;; Set fill-paragraph to 80 characters.
-(setq-default fill-column 80)
+(require 'super-save)
+(add-to-list 'super-save-triggers 'ace-window)
+(super-save-mode +1)
 
-;; Meaningful names for buffers with the same name.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Uniquify configurations.                                               ;;;;
+;;;;     - Meaningful names for buffers with the same name.                 ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)
 (setq uniquify-separator "|")
 (setq uniquify-after-kill-buffer-p t)
 (setq uniquify-ignore-buffers-re "^\\*")
 
-;; Use Shift + arrow keys to switch between windows.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Window movement configurations.                                        ;;;;
+;;;;     - Use Shift + Arrow Keys to switch between windows.                ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (require 'windmove)
 (windmove-default-keybindings)
 
-;; Automatically save buffers associated with files when switching to another
-;; window.
-(require 'super-save)
-(add-to-list 'super-save-triggers 'ace-window)
-(super-save-mode +1)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Compilation configurations                                             ;;;;
+;;;;     - Save before compiling.                                           ;;;;
+;;;;     - Kill old compile process when executing a new one.               ;;;;
+;;;;     - Point to the first error.                                        ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Compilation details.
 (require 'compile)
-(setq compilation-ask-about-save nil         ;; Save before compiling.
-      compilation-always-kill t              ;; Kill old compile process.
-      compilation-scroll-output 'first-error ;; Move to the first error.
+(setq compilation-ask-about-save nil        
+      compilation-always-kill t             
+      compilation-scroll-output 'first-error
       )
 
-;; Spell checking on buffers.
-(require 'flyspell)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Spell-checking configurations.                                         ;;;;
+;;;;     - Use Hunspell.                                                    ;;;;
+;;;;     - Capable of detecting multiple languages at the same time.        ;;;;
+;;;;     - Current languages: English (GB, US), Spanish (MX).               ;;;;
+;;;;     - Save non-included words to a personal dictionary.                ;;;;
+;;;;     - Configure spell-checking on texts and programming modes.         ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(require 'flyspell)
 (with-eval-after-load "ispell"
-  ;; Configure 'LANG', otherwise ispell.el cannot find a 'default-dictionary'
-  ;; even though multiple dictionaries will be configured in next line.
   (setenv "LANG" "en_US.UTF-8")
   (setq ispell-program-name "hunspell")
-  ;; Configure the necessary languages.
   (setq ispell-dictionary "en_GB,en_US,es_MX")
-  ;; ispell-set-spellchecker-params has to be called before
-  ;; ispell-hunspell-add-multi-dic to work.
   (ispell-set-spellchecker-params)
   (ispell-hunspell-add-multi-dic "en_GB,en_US,es_MX")
-  ;; Saving words to the personal dictionary.
   (setq ispell-personal-dictionary "~/.hunspell_personal")
   )
 
-;; The personal dictionary file has to exist, otherwise hunspell will
-;; silently not use it.
 (unless (file-exists-p ispell-personal-dictionary)
   (write-region "" nil ispell-personal-dictionary nil 0))
 
-;; Spell checking on texts.
 (add-hook 'text-mode-hook #'flyspell-mode)
-
-;; Spell checking while programming.
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 
-;; Show current function while programming.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Which-function configurations.                                         ;;;;
+;;;;     - Show current function the pointer is on while programming.       ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq which-func-cleanup-function #'trim-function-name)
 (add-hook 'prog-mode-hook #'which-function-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; End of configurations.                                                 ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'corvus-behaviour)
 

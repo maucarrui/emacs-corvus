@@ -3,34 +3,36 @@
 ;; Main dependencies on other packages. It also takes care of the automatic
 ;; installation of all packages required by Corvus.
 
-(require 'cl-lib)
-(require 'package)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Package configurations.                                                ;;;;
+;;;;   - Add MELPA to the trusted package archives.                         ;;;;
+;;;;   - List of packages dependencies:                                     ;;;;
+;;;;       * Anzu                                                           ;;;;
+;;;;         Show number of matches in mode-line while searching.           ;;;;
+;;;;       * Diminish                                                       ;;;;
+;;;;         Properly hide minor modes from the mode line.                  ;;;;
+;;;;       * Expand Region                                                  ;;;;
+;;;;         Smart expanding System, useful to select words and             ;;;;
+;;;;         functions.                                                     ;;;;
+;;;;       * Flycheck                                                       ;;;;
+;;;;         Spell-checking on the fly as one types.                        ;;;;
+;;;;       * Magit                                                          ;;;;
+;;;;         Git interface in Emacs.                                        ;;;;
+;;;;       * Multiple Cursors                                               ;;;;
+;;;;         Allows the editor to have multiple cursors at once.            ;;;;
+;;;;       * Nord Theme                                                     ;;;;
+;;;;         Cold theme for the editor.                                     ;;;;
+;;;;       * Smartparens                                                    ;;;;
+;;;;         Smart parenthesis minor mode.                                  ;;;;
+;;;;       * Super Save                                                     ;;;;
+;;;;         Smart save functions (e.g. save when switching buffers).       ;;;;
+;;;;       * Windmove                                                       ;;;;
+;;;;         Move between windows using Shift + arrow keys.                 ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Add MELPA to the trusted package archives.
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
 
-;; List of packages dependencies:
-;; - Anzu
-;;     Show number of matches in mode-line while searching.
-;; - Diminish
-;;     Properly hide minor modes from the mode line.
-;; - Expand Region
-;;     Smart expanding System, useful to select words and functions.
-;; - Flycheck
-;;     Spell-checking on the fly as one types.
-;; - Magit
-;;     Git interface in Emacs.
-;; - Multiple Cursors
-;;     Allows the editor to have multiple cursors at once.
-;; - Nord Theme
-;;     Cold theme for the editor.
-;; - Smartparens
-;;     Smart parenthesis minor mode.
-;; - Super Save
-;;     Smart save functions (e.g. save when switching buffers).
-;; - Windmove
-;;     Move between windows using Shift + arrow keys.
 (defvar corvus-main-packages
   '(anzu
     diminish
@@ -43,6 +45,13 @@
     super-save
     windmove)
   "List of main dependencies of Corvus")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Install Dependencies.                                                  ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'cl-lib)
+(require 'package)
 
 (defun corvus-install-package (package)
   "Install the given package when necessary."
@@ -59,6 +68,10 @@
   (mapc #'corvus-install-package corvus-main-packages))
 
 (corvus-install-packages)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; End of configurations.                                                 ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'corvus-packages)
 
