@@ -9,6 +9,8 @@
 ;;;;   - List of packages dependencies:                                     ;;;;
 ;;;;       * Anzu                                                           ;;;;
 ;;;;         Show number of matches in mode-line while searching.           ;;;;
+;;;;       * Crux                                                           ;;;;
+;;;;         A Collection of ridiculously useful extensions.                ;;;;
 ;;;;       * Diminish                                                       ;;;;
 ;;;;         Properly hide minor modes from the mode line.                  ;;;;
 ;;;;       * Expand Region                                                  ;;;;
@@ -35,6 +37,7 @@
 
 (defvar corvus-main-packages
   '(anzu
+    crux
     diminish
     expand-region
     flycheck
