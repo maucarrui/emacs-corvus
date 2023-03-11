@@ -39,7 +39,8 @@
   (require 'corvus-themes)
   (corvus-message "Setting up modules...")
   (require 'corvus-leetcode)
-  (require 'corvus-latex))
+  (require 'corvus-latex)
+  (require 'corvus-golang))
 
 (defun initialize-corvus ()
   "Initialize Corvus, indicating the time it took to set up."
