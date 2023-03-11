@@ -26,6 +26,7 @@
 (diminish 'smartparens-mode)
 (diminish 'anzu-mode)
 (diminish 'flyspell-mode)
+(diminish 'company-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; End of configurations.                                                 ;;;;

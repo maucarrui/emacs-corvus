@@ -9,6 +9,8 @@
 ;;;;   - List of packages dependencies:                                     ;;;;
 ;;;;       * Anzu                                                           ;;;;
 ;;;;         Show number of matches in mode-line while searching.           ;;;;
+;;;;       * Company                                                        ;;;;
+;;;;         Auto-completion framework for Emacs.                           ;;;;
 ;;;;       * Crux                                                           ;;;;
 ;;;;         A Collection of ridiculously useful extensions.                ;;;;
 ;;;;       * Diminish                                                       ;;;;
@@ -37,6 +39,7 @@
 
 (defvar corvus-main-packages
   '(anzu
+    company
     crux
     diminish
     expand-region
