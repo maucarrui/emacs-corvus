@@ -13,7 +13,10 @@
 (add-hook 'go-mode-hook
           (lambda ()
             ;; Set tab-width to two.
-            (set tab-width 2)
+            (setq tab-width 2)
+
+            ;; Disable company auto-completion on comments.
+            (delete 'company-dabbrev company-backends)
 
             ;; Run the go formatting program (gofmt) before saving.
             (add-hook 'before-save-hook 'gofmt-before-save)))
