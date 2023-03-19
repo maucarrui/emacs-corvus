@@ -57,6 +57,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Spell-checking configurations.                                         ;;;;
 ;;;;     - Use Hunspell.                                                    ;;;;
+;;;;     - Use Wucuo for CamelCase spellings.                               ;;;;
 ;;;;     - Capable of detecting multiple languages at the same time.        ;;;;
 ;;;;     - Current languages: English (GB, US), Spanish (MX).               ;;;;
 ;;;;     - Save non-included words to a personal dictionary.                ;;;;
@@ -64,6 +65,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'flyspell)
+(require 'wucuo)
 (with-eval-after-load "ispell"
   (setenv "LANG" "en_US.UTF-8")
   (setq ispell-program-name "hunspell")
@@ -76,8 +78,8 @@
 (unless (file-exists-p ispell-personal-dictionary)
   (write-region "" nil ispell-personal-dictionary nil 0))
 
-(add-hook 'text-mode-hook #'flyspell-mode)
-(add-hook 'prog-mode-hook #'flyspell-prog-mode)
+(add-hook 'text-mode-hook #'wucuo-start)
+(add-hook 'prog-mode-hook #'wucuo-start)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Which-function configurations.                                         ;;;;

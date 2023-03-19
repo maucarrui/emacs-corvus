@@ -50,6 +50,7 @@
     nord-theme
     smartparens
     super-save
+    wucuo
     windmove)
   "List of main dependencies of Corvus")
 
