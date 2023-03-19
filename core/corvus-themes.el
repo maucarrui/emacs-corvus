@@ -11,6 +11,19 @@
   (set-face-foreground 'font-lock-doc-face "MediumOrchid3")
   (set-face-foreground 'font-lock-comment-face "MediumOrchid2")
   (set-face-foreground 'font-lock-comment-delimiter-face "MediumOrchid2")
+
+  ;; Handle diff highlights.
+  (set-face-attribute 'diff-hl-insert nil
+                      :background nil
+                      :foreground "#a3be8c")
+
+  (set-face-attribute 'diff-hl-delete nil
+                      :background nil
+                      :foreground "#bf616a")
+
+  (set-face-attribute 'diff-hl-change nil
+                      :background nil
+                      :foreground "#ebcb8b")
   
   ;; Highlight current number line with a bright orange.
   (set-face-attribute 'line-number-current-line nil 

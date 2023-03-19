@@ -31,6 +31,43 @@
 (setq-default truncate-lines t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Git Diff Highlights Configurations.                                    ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'diff-hl)
+
+(let ((bitstr (fringe-helper-convert
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX"
+               "........XX")))
+  (define-fringe-bitmap 'my-diff-hl-bitmap bitstr nil nil 'center))
+(setq diff-hl-fringe-bmp-function (lambda (type pos) 'my-diff-hl-bitmap))
+
+(setq diff-hl-flydiff-delay 0.05)
+(diff-hl-flydiff-mode)
+(global-diff-hl-mode)
+
+(add-hook 'dired-mode-hook #'diff-hl-dired-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; End of configurations.                                                 ;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

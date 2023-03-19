@@ -41,6 +41,7 @@
   '(anzu
     company
     crux
+    diff-hl
     diminish
     expand-region
     flycheck
