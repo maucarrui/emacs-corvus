@@ -65,6 +65,12 @@
 (diff-hl-flydiff-mode)
 (global-diff-hl-mode)
 
+;; Update buffer appearance after committing with Magit.
+(with-eval-after-load 'magit
+    (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+    (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+
+;; Enable diff-hl in dired mode.
 (add-hook 'dired-mode-hook #'diff-hl-dired-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
