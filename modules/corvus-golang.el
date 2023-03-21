@@ -15,6 +15,11 @@
             ;; Set tab-width to two.
             (setq tab-width 2)
 
+            ;; Ignore naming convention for Flyspell (such as camel-case and
+            ;; pascal-case).
+            (setq flyspell-generic-check-word-predicate
+                  'flyspell-generic-progmode-ignore-naming-conventions)
+
             ;; Disable company auto-completion on comments.
             (delete 'company-dabbrev company-backends)
 

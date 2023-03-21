@@ -74,5 +74,36 @@ For example, the following code defines a diagonal line.
           num))
       strings)))
 
+(defun flyspell-generic-progmode-ignore-naming-conventions ()
+  "Ignores sensitive case words (such like pascal-case and
+camel-case formats) using 'flyspell-generic-progmode-verify' behaviour."
+  (let (
+         ;; Enable case-sensitive searches.
+         (case-fold-search nil)
+
+         ;; Get the word the pointer is on.
+         (str (current-word 'strict))
+
+         ;; Regular Expression for pascal-case matches.
+         (pascal-regexp
+          (rx (any upper)
+              (one-or-more (one-or-more (any lower))
+                           (one-or-more (any upper)))))
+         
+         ;; Regular expression for camel-case matches.
+         (camel-regexp
+          (rx (any lower)
+              (one-or-more (one-or-more (any upper))
+                           (zero-or-more (any lower))))))
+    
+    ;; When the current word is misspelled, only correct it if its not pascal or
+    ;; camel cased.
+    (when (flyspell-generic-progmode-verify)
+      (if (or (string-match-p pascal-regexp str)
+              (string-match-p camel-regexp str))
+          nil
+        t))
+    ))
+
 (provide 'corvus-utilities)
 ;;; corvus-utilities.el ends here.
