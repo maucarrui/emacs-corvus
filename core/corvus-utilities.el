@@ -51,7 +51,7 @@ first 20 characters of the function name."
       file-name)))
 
 (defun fringe-helper-convert (&rest strings)
-"Convert STRINGS into a vector usable for `define-fringe-bitmap'.
+  "Convert STRINGS into a vector usable for `define-fringe-bitmap'.
 Each string in STRINGS represents a line of the fringe bitmap.
 Periods (.) are background-colored pixel; Xs are foreground-colored. The
 fringe bitmap always is aligned to the right. If the fringe has half
