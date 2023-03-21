@@ -19,14 +19,33 @@
 
 (setq-default mode-line-buffer-identification
               (quote
-                (:eval (trim-buffer-name (buffer-name)))))
+               (:eval (trim-buffer-name (buffer-name)))))
 
+(setq-default
+ mode-line-format
+ (list " "
+       " " 'mode-line-mule-info
+       'mode-line-modified
+       " " 'mode-line-buffer-identification
+       " " 'mode-line-modes
+       " " '(vc-mode vc-mode)
+       " "
+       '(:eval (concat
+                "(%l, %c) ["
+                (format "%d" (/ (* (line-number-at-pos) 100)
+                                (count-lines (point-min) (point-max))))
+                "%%]"))
+       'mode-line-end-spaces
+       ))
+ 
 (diminish 'super-save-mode)
 (diminish 'eldoc-mode)
 (diminish 'smartparens-mode)
 (diminish 'anzu-mode)
 (diminish 'flyspell-mode)
-(diminish 'company-mode)
+(diminish 'wucuo-mode)
+(add-hook 'prog-mode-hook (lambda ()
+                            (diminish 'company-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; End of configurations.                                                 ;;;;
