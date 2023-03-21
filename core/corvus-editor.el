@@ -26,7 +26,7 @@
 ;;;;     - Preserve point position when scrolling.                          ;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq scroll-margin 0)
+(setq scroll-margin 3)
 (setq scroll-conservatively 100000)
 (setq scroll-preserve-screen-position 1)
 
