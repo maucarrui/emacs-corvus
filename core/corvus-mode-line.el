@@ -27,6 +27,8 @@
        " " 'mode-line-mule-info
        'mode-line-modified
        " " 'mode-line-buffer-identification
+       '(:eval (when locked-buffer-mode
+                 (propertize " [Locked]" 'face '(:foreground "#ebcb8b"))))
        " " 'mode-line-modes
        " " '(vc-mode vc-mode)
        " "
@@ -44,6 +46,7 @@
 (diminish 'anzu-mode)
 (diminish 'flyspell-mode)
 (diminish 'wucuo-mode)
+(diminish 'locked-buffer-mode)
 (add-hook 'prog-mode-hook (lambda ()
                             (diminish 'company-mode)))
 
