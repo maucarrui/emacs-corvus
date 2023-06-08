@@ -46,6 +46,7 @@
     expand-region
     flycheck
     magit
+    markdown-mode
     multiple-cursors
     nord-theme
     smartparens
