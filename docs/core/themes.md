@@ -18,7 +18,6 @@ group, which are:
 | #434C5E | #ECEFF4     | #81A1C1    | #EBCB8B |
 | #4C566A |             | #5E81AC    | #A3BE8C |
 |         |             |            | #B48EAD |
-|         |             |            |         |
 
 ### Corvus specific configurations
 
