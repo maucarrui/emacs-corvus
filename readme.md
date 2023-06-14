@@ -1,6 +1,6 @@
 # Emacs Corvus
 
-A personal Emacs distribution that aims for simplicity and efficiency. 
+A personal Emacs configuration that aims for simplicity and efficiency. 
 
 **Warning:** Corvus is still in early development and many features can be added
 and/or removed.
@@ -57,11 +57,52 @@ use on your day to day basis with no problems.
 Corvus tries to include all of the tools that can make you work faster, and
 smarter, without taking all control from you.
 
----
-
 ## Inspiration
 
 This project structure is heavily inspired in 
 [Prelude](https://github.com/bbatsov/prelude)
 and 
 [Lunary Emacs](https://github.com/casouri/lunarymacs).
+
+## Installation
+
+Assuming you have `Emacs` and `Git` installed on your system, simply clone this
+repository and link it to the `~/.emacs.d` directory.
+
+```
+git clone https://github.com/maucarrui/emacs-corvus path/to/local/repo
+ln -s path/to/local/repo ~/.emacs.d
+cd ~/.emacs.d
+```
+
+### Automatic installation of packages
+
+The first time you open Corvus, it will install of its dependencies and set up
+everything that's necessary for it to work.
+
+## Structure
+
+Corvus has predefined modular structure that allows you to extend the system the
+way you want it in an organized matter.
+
+```
+corvus-emacs/
+├── core
+│   ├── corvus-behaviour.el          Buffer's behaviour configurations.
+│   ├── corvus-editor.el             Editor configurations.
+│   ├── corvus-keybindings.el        Corvus' predefined keybindings.
+│   ├── corvus-mode-line.el          Mode-line specifications.
+│   ├── corvus-packages.el           Package auto-installation functions.
+│   ├── corvus-themes.el             Corvus' available themes.
+│   ├── corvus-user-interface.el     User interface specifications.
+│   └── corvus-utilities.el          Corvus' utility functions.
+├── docs
+│   └── ...                          Documentation for Corvus' core and modules.
+└── modules
+    └── ...                          Specific configurations for programming
+                                     languages.
+```
+
+## License
+
+Distributed under the GNU General Public License, version 3.
