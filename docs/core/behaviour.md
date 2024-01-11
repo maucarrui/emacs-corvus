@@ -197,3 +197,27 @@ all major groups contained in `prog-mode`.
 ```elisp
 (add-hook 'prog-mode-hook #'company-mode)
 ```
+
+## Jump-to-definition functionality
+
+Jump-to-definition is achieved thanks to the `dumb-jump` package and the `ag`
+search engine. Once `dumb-jump` is installed, simply bind the `xref` 
+keybindings to the ones that correspond to `xref`.
+
+```elisp
+(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
+```
+
+When working on a git-based project, the search engine `git-grep` is used. In
+other cases, `ag`, `grep`, and `ack` can be used. Corvus prefers `ag` when
+working on projects that aren't git-based.
+
+```elisp
+(setq-default dumb-jump-prefer-searcher 'ag)
+```
+
+The basic keybindings are the following:
+
+| Keybinding | Description                                  |
+| `M-.`      | Go to definition of function, variable, etc. |
+| `M-,`      | Return to the previous point before jumping. |
