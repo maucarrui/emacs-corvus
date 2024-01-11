@@ -48,7 +48,8 @@
 (diminish 'wucuo-mode)
 (diminish 'locked-buffer-mode)
 (add-hook 'prog-mode-hook (lambda ()
-                            (diminish 'company-mode)))
+                            (diminish 'company-mode)
+                            (diminish 'highlight-indent-guides-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; End of configurations.                                                 ;;;;

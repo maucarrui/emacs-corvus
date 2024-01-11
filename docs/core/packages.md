@@ -28,6 +28,9 @@ All of these packages can be found on MELPA.
 |                  |                                                         |
 | Flycheck         | Spell-checking on the fly as one types.                 |
 |                  |                                                         |
+| Highlight Indent | Shows in a more friendly way how code is indented.      |
+| Guides           |                                                         |
+|                  |                                                         |
 | Magit            | Git interface for Emacs.                                |
 |                  |                                                         |
 | Multiple Cursors | Allows the editor to have multiple cursors (pointers).  |

@@ -74,6 +74,48 @@ truncates lines so that they all have the same width and height.
 (setq-default truncate-lines t)
 ```
 
+## Indentation Highlighting Guides
+
+Indentation guides, as the name implies, are a way to visualize in a more 
+friendly way indentations. In this case, the `|` char is used as a guide.
+The following function is an example of how this guide is shown:
+
+```golang
+func EqualByteMatrix(a, b [][]byte) bool {
+|	if len(a) != len(b) {
+|	|	return false
+|	}
+|	for i, v := range a {
+|	|	if !bytes.Equal(v, b[i]) {
+|	|	|	return false
+|	|	}
+|	}
+|	return true
+}
+```
+
+The package `highlight-indent-guides` is the one responsible for this
+functionality.
+
+```elisp
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+```
+
+This package allows the use for many different guides. For example, instead of
+using the character `|`, we can define a bitmap. However, in the case for
+Corvus, the most useful/simplistic approach is to use the mentioned character.
+
+```elisp
+(setq-default highlight-indent-guided-method 'character)
+```
+
+Guides can also be highlighted depending on where the cursor is.
+
+```elisp
+(setq-default highlight-indent-guides-responsive 'top)
+(setq-default highlight-indent-guides-delay 0)
+```
+
 ## Git diff highlights
 
 The following configurations are designed for the `diff-hl` package.

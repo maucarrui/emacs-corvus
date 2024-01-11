@@ -34,8 +34,7 @@
 ;;;;         Move between windows using Shift + arrow keys.                 ;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
 (defvar corvus-main-packages
   '(anzu
@@ -45,6 +44,7 @@
     diminish
     expand-region
     flycheck
+    highlight-indent-guides
     magit
     markdown-mode
     multiple-cursors
