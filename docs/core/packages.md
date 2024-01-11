@@ -24,6 +24,8 @@ All of these packages can be found on MELPA.
 |                  |                                                         |
 | Diminish         | Properly hide specified minor modes from the mode-line. |
 |                  |                                                         |
+| Dumb Jump        | Jump-to-Definition functionality.                       |
+|                  |                                                         |
 | Expand Region    | Smart expanding system, useful to select words.         |
 |                  |                                                         |
 | Flycheck         | Spell-checking on the fly as one types.                 |

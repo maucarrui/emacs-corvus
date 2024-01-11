@@ -42,6 +42,7 @@
     crux
     diff-hl
     diminish
+    dumb-jump
     expand-region
     flycheck
     highlight-indent-guides
